@@ -33,8 +33,6 @@ function move(){
                     // 크다면 이동
                     if (canGo(nx ,ny) && arr[nx][ny] > temp[0]){
                         temp = [arr[nx][ny], nx, ny]
-
-                        continue
                     }
                 }
                 marbles[temp[1]][temp[2]]+=1
