@@ -38,7 +38,7 @@ function move(){
                 }
                 if (temp[0]!=-1){
                     marbles[temp[1]][temp[2]]+=1
-                    marbles[i][j]=0
+                    marbles[i][j]-=1
                 }
 
             }
@@ -57,7 +57,6 @@ function move(){
 
 for (let i=0;i<t;i++){
     move()
-
 }
 let res = 0
 for( let j =0; j<n;j++){
