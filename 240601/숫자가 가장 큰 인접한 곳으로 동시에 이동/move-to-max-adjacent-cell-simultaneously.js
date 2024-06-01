@@ -21,11 +21,12 @@ function canGo(x, y){
 }
 // 1초마다 실행되는 구슬을 이동시키는 함수
 function move(){
+    const tempMarvles = marbles.map((item)=>[...item])
     // 모든 격자판 조사하면서 구슬 여부 확인
     for (let i=0; i<n;i++){
         for (let j=0;j<n;j++){
             // 구슬이 있으면 이동시킴
-            if (marbles[i][j]){
+            if (tempMarvles[i][j]){
                 // [숫자, x좌표 y좌표] 저장 후 숫자가 가장 큰 좌표 찾아내기 위한 배열
                 temp = [-1, -1, -1]
                 for (let k=0;k<4;k++){
