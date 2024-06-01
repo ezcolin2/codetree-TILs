@@ -36,8 +36,11 @@ function move(){
                         temp = [arr[nx][ny], nx, ny]
                     }
                 }
-                marbles[temp[1]][temp[2]]+=1
-                marbles[i][j]=0
+                if (temp[0]!=-1){
+                    marbles[temp[1]][temp[2]]+=1
+                    marbles[i][j]=0
+                }
+
             }
         }
     }
