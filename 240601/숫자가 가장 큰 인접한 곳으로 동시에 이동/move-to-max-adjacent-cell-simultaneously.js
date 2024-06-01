@@ -62,7 +62,7 @@ for (let i=0;i<t;i++){
 let res = 0
 for( let j =0; j<n;j++){
     for (let k =0;k<n;k++){
-        if (marbles[j][k]){
+        if (marbles[j][k]==1{
             res++
         }
     }
