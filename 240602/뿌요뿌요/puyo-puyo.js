@@ -17,18 +17,14 @@ function canGo(x, y){
 function dfs(x, y){
     isVisited[x][y] = true
     cnt+=1
-    for (let i=0;i<n;i++){
-        for (let j=0;j<n;j++){
+
             // 방문하지 않았다면 방문
             for (let k=0;k<4;k++){
-                const [nx, ny] = [i+dx[k], j+dy[k]]
+                const [nx, ny] = [x+dx[k], y+dy[k]]
                 if (canGo(nx, ny) && !isVisited[nx][ny] && arr[x][y]==arr[nx][ny]){
                     dfs(nx, ny)
                 }
             }
-
-        }
-    }
 }
 let number = 0;
 let maxNum = 0;
@@ -38,10 +34,11 @@ for (let x=0;x<n;x++){
         dfs(x, y)
         if (cnt>=4){
             number+=1
-            if (cnt > maxNum){
+
+        }
+                    if (cnt > maxNum){
                 maxNum = cnt
             }
-        }
     }
 }
 console.log(number, maxNum)
