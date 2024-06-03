@@ -3,8 +3,8 @@ const fs = require('fs');
 class Queue{
     constructor(){
         this.items={};
-        let head=0;
-        let tail=0;
+        this.head=0;
+        this.tail=0;
     }
 
     push(item){
