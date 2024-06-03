@@ -14,7 +14,6 @@ class Queue{
 
     pop(){
         const item = this.items[this.head];
-        delete this.items[this.head];
         this.head++;
         return item;
     }
