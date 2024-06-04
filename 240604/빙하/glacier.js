@@ -53,8 +53,8 @@ function dfs(x, y){
 let count = 0;
 for (let i=0;i<n;i++){
     for (let j=0;j<m;j++){
-        // 방문하지 않았다면 탐색 시작
-        if (!isVisited[i][j]){
+        // 방문하지 않았고 물이라면 탐색 시작
+        if (!isVisited[i][j] && arr[i][j] == 0){
             isVisited[i][j] = true;
             dfs(i, j);
             count++;
