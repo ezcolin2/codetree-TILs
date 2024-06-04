@@ -38,17 +38,18 @@ function dfs(x, y, copiedArr, copiedIsVisited){
         // 갈 수 있고 방문하지 않았다면 
         if (canGo(nx, ny) && !copiedIsVisited[nx][ny]){
             // 빙하라면?
-            if (copiedArr[nx][ny] == 1 && arr[nx][ny] == 1){
+            if (copiedArr[nx][ny] == 1){
                 // isVisited를 true 만들지만 방문하지는 않음
                 copiedIsVisited[nx][ny] = true;
                 // 원본 2차원 배열을 물로 만듦
                 arr[nx][ny] = 0;
+                copiedArr[nx][ny] = 0;
                 tempMelted++;
             }
             // 물이라면?
             else{
                 // isVisited를 true 만들고 방문
-                isVisited[nx][ny] = true;
+                // isVisited[nx][ny] = true;
                 copiedIsVisited[nx][ny] = true;
                 tempMelted += dfs(nx, ny, copiedArr, copiedIsVisited);
             }
@@ -72,7 +73,6 @@ for (let i=0;i<n;i++){
             if (res>0){
                 count++;
                 melted = res;
-
             }
         }
     }
