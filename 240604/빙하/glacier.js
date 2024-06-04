@@ -75,6 +75,7 @@ for (let i=0;i<n;i++){
                 melted = res;
             }
         }
+        isVisited[i][j] = true
     }
 }
 console.log(count, melted);
