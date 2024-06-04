@@ -23,8 +23,9 @@ const dx = [0, 0, 1, -1];
 const dy = [1, -1, 0, 0];
 
 // dfs를 호출할 때 visited를 true로 만들기
-let melted=0;
 function dfs(x, y){
+    // 빙하 녹인 수
+    let tempMelted = 0;
     // 원본 2차원 배열 복사
     const copiedArr = arr.map((item)=>[...item]);
     for (let i=0;i<4;i++){
@@ -37,27 +38,33 @@ function dfs(x, y){
                 isVisited[nx][ny] = true;
                 // 원본 2차원 배열을 물로 만듦
                 arr[nx][ny] = 0;
-                melted++;
+                tempMelted++;
             }
             // 물이라면?
             else{
                 // isVisited를 true 만들고 방문
                 isVisited[nx][ny] = true;
-                dfs(nx, ny);
+                tempMelted += dfs(nx, ny);
             }
         }
     }
+    return tempMelted;
 }
 
 // 시작
+let melted = 0;
 let count = 0;
 for (let i=0;i<n;i++){
     for (let j=0;j<m;j++){
         // 방문하지 않았고 물이라면 탐색 시작
         if (!isVisited[i][j] && arr[i][j] == 0){
             isVisited[i][j] = true;
-            dfs(i, j);
-            count++;
+            const res = dfs(i, j);
+            melted += res;
+            // 모두 녹였을 때도 탐색을 하게 되는데 이럴 때 count가 증가하지 않게
+            if (res>0){
+                count++;
+            }
         }
     }
 }
