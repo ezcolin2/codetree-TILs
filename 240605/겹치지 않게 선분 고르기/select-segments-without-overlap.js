@@ -13,25 +13,24 @@ let currentCnt = 0;
 const currentCoordinates = []
 // 겹치는지
 function isOverrapped(idx){
+    const [start, end] = arr[idx];
     for (let i=0;i<currentCoordinates.length;i++){
-        if (i==idx){
-            continue;
+        const [tempStart, tempEnd] = currentCoordinates[i];
+        if (start==tempStart){
+            return true;
         }
-        if (idx<i && arr[idx][1] >= arr[i][0]){
-             return true;
+        if (start<tempStart && end>=tempStart){
+            return true;
         }
-        if (idx>i && arr[i][1] >= arr[idx][0]){
+        if (start>tempStart && tempEnd>=start){
             return true;
         }
     }
 
     return false;
 }
-function backTracking(idx){
-    if (idx==n){
-        res.push(currentCnt);
-        return;
-    }
+function backTracking(){
+
     // // 방문했거나 겹치면 다음 
     // if (isVisited[idx] || isOverrapped(idx)){
     //     backTracking(idx+1);
@@ -39,13 +38,11 @@ function backTracking(idx){
     // }
     // 경우의 수
     for (let i=0;i<n;i++){
-        // 방문하지 않았고 겹치지 않는다면
-        if (!isVisited[i] && !isOverrapped(i)){
-            isVisited[i] = true;
-            currentCoordinates.push([arr[i]]); // 방문한 좌표 정보 넣음
+        // 겹치지 않는다면
+        if (!isOverrapped(i)){
+            currentCoordinates.push(arr[i]); // 방문한 좌표 정보 넣음
             currentCnt++;
-            backTracking(idx+1);
-            isVisited[i] = false;
+            backTracking();
             currentCoordinates.pop();
             currentCnt--;
         }
@@ -53,6 +50,6 @@ function backTracking(idx){
     res.push(currentCnt);
 
 }
-backTracking(0);
+backTracking();
 res.sort((a, b)=>b-a);
 console.log(res[0]);
