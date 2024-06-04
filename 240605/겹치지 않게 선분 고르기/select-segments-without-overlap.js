@@ -39,12 +39,14 @@ function backTracking(){
     // 경우의 수
     for (let i=0;i<n;i++){
         // 겹치지 않는다면
-        if (!isOverrapped(i)){
+        if (!isVisited[i] && !isOverrapped(i)){
             currentCoordinates.push(arr[i]); // 방문한 좌표 정보 넣음
             currentCnt++;
+            isVisited[i]=true;
             backTracking();
             currentCoordinates.pop();
             currentCnt--;
+            isVisited[i]=false;
         }
     }
     res.push(currentCnt);
