@@ -38,12 +38,11 @@ function dfs(x, y, copiedArr, copiedIsVisited){
         // 갈 수 있고 방문하지 않았다면 
         if (canGo(nx, ny) && !copiedIsVisited[nx][ny]){
             // 빙하라면?
-            if (copiedArr[nx][ny] == 1){
+            if (copiedArr[nx][ny] == 1 && arr[nx][ny] == 1){
                 // isVisited를 true 만들지만 방문하지는 않음
                 copiedIsVisited[nx][ny] = true;
                 // 원본 2차원 배열을 물로 만듦
                 arr[nx][ny] = 0;
-                copiedArr[nx][ny] = 0;
                 tempMelted++;
             }
             // 물이라면?
@@ -61,21 +60,18 @@ function dfs(x, y, copiedArr, copiedIsVisited){
 // 시작
 let melted = 0;
 let count = 0;
-for (let i=0;i<n;i++){
-    for (let j=0;j<m;j++){
-        // 방문하지 않았고 물이라면 탐색 시작
-        if (!isVisited[i][j] && arr[i][j] == 0){
-            isVisited[i][j] = true;
-            const copiedArr = arr.map((item)=>[...item]);
-            const copiedIsVisited = isVisited.map((item)=>[...item]);
-            const res = dfs(i, j, copiedArr, copiedIsVisited);
-            // 모두 녹였을 때도 탐색을 하게 되는데 이럴 때 count가 증가하지 않게
-            if (res>0){
-                count++;
-                melted = res;
-            }
-        }
-        isVisited[i][j] = true
+while (true){
+    const copiedIsVisited = isVisited.map((item)=>[...item]);
+    const copiedArr = arr.map((item)=>[...item]);
+
+    const res = dfs(0, 0, copiedArr, copiedIsVisited)
+    
+    if (res>0){
+        melted= res;
+        count++;
+    }
+    else{
+        console.log(count, melted);
+        return;
     }
 }
-console.log(count, melted);
