@@ -71,8 +71,8 @@ function dfs(cur) {
 
 // 폭탄이 존재하는 모든 좌표
 let coordinates = []
-for (let i = 0; i < 4; i++) {
-    for (let j = 0; j < 4; j++) {
+for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
         if (arr[i][j] == 1) {
             coordinates.push([i, j])
         }
