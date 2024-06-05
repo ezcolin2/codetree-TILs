@@ -1,57 +1,50 @@
-const fs = require('fs');
+const fs = require("fs");
 const input = fs.readFileSync(0).toString().trim().split('\n');
-const n = Number(input[0].trim());
-const arr = input.slice(1).map((item)=>item.trim().split(' ').map(Number));
-arr.sort((a, b)=> a[0]-a[b] || a[1]-b[1])
-// 각 선분 방문 여부
-const isVisited = Array(n).fill(false);
-// 모든 경우에 대한 선문 수
-const res = [];
-// 현재 개수
-let currentCnt = 0;
-// 현재까지 방문한 좌표 
-const currentCoordinates = []
-// 겹치는지
-function isOverrapped(idx){
-    const [start, end] = arr[idx];
-    for (let i=0;i<currentCoordinates.length;i++){
-        const [tempStart, tempEnd] = currentCoordinates[i];
-        if (start==tempStart){
-            return true;
-        }
-        if (start<tempStart && end>=tempStart){
-            return true;
-        }
-        if (start>tempStart && tempEnd>=start){
-            return true;
+
+// 변수 선언 및 입력
+const n = Number(input[0]);
+const segments = input.slice(1, 1 + n).map(line => line.split(' ').map(Number));
+
+let ans = 0;
+const selectedSegs = [];
+
+function overlapped(seg1, seg2) {
+    const [ax1, ax2] = seg1;
+    const [bx1, bx2] = seg2;
+
+    // 두 선분이 겹치는지 여부는
+    // 한 점이 다른 선분에 포함되는 경우로 판단 가능합니다.
+    return (ax1 <= bx1 && bx1 <= ax2) || (ax1 <= bx2 && bx2 <= ax2) ||
+           (bx1 <= ax1 && ax1 <= bx2) || (bx1 <= ax2 && ax2 <= bx2);
+}
+
+function possible() {
+    // 단 한쌍이라도 선분끼리 겹치면 안됩니다
+    for (let i = 0; i < selectedSegs.length; i++) {
+        for (let j = i + 1; j < selectedSegs.length; j++) {
+            if (overlapped(selectedSegs[i], selectedSegs[j])) {
+                return false;
+            }
         }
     }
 
-    return false;
+    return true;
 }
-function backTracking(){
 
-    // // 방문했거나 겹치면 다음 
-    // if (isVisited[idx] || isOverrapped(idx)){
-    //     backTracking(idx+1);
-    //     return;
-    // }
-    // 경우의 수
-    for (let i=0;i<n;i++){
-        // 겹치지 않는다면
-        if (!isVisited[i] && !isOverrapped(i)){
-            currentCoordinates.push(arr[i]); // 방문한 좌표 정보 넣음
-            currentCnt++;
-            isVisited[i]=true;
-            backTracking();
-            currentCoordinates.pop();
-            currentCnt--;
-            isVisited[i]=false;
+function findMaxSegments(cnt) {
+    if (cnt === n) {
+        if (possible()) {
+            ans = Math.max(ans, selectedSegs.length);
         }
+        return;
     }
-    res.push(currentCnt);
 
+    selectedSegs.push(segments[cnt]);
+    findMaxSegments(cnt + 1);
+    selectedSegs.pop();
+
+    findMaxSegments(cnt + 1);
 }
-backTracking();
-res.sort((a, b)=>b-a);
-console.log(res[0]);
+
+findMaxSegments(0);
+console.log(ans);
