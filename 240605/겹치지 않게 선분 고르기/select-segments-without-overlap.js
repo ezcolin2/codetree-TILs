@@ -43,7 +43,6 @@ function findMaxSegments(cnt) {
     findMaxSegments(cnt + 1);
     selectedSegs.pop();
 
-    findMaxSegments(cnt + 1);
 }
 
 findMaxSegments(0);
