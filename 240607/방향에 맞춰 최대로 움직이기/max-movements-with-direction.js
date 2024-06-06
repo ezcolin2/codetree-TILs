@@ -22,9 +22,11 @@ function dfs(x, y, cnt){
     }
     const currNumber = number[x][y];
     const currDirection = direction[x][y];
+    let [tempX, tempY] = [x, y];
     // 좌표를 벗어날 때까지 반복
     while(true){
-        let [nx, ny] = [x+dx[currDirection], y+dy[currDirection]];
+        
+        let [nx, ny] = [tempX+dx[currDirection], tempY+dy[currDirection]];
         // 갈 수 있다면
         if (canGo(nx, ny)){
             if (number[nx][ny] > number[x][y]){
@@ -34,7 +36,7 @@ function dfs(x, y, cnt){
             break;
         }
 
-        [x, y] = [nx, ny];
+        [tempX, tempY] = [nx, ny];
     }
 }
 dfs(r-1, c-1, 0);
