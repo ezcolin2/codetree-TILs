@@ -15,12 +15,13 @@ let res = Number.MAX_SAFE_INTEGER;
 // currIdx는 arr의 현재 위치
 // cnt는 몇 개 골랐는지
 function makeCombination(currIdx, cnt){
-    if (currIdx == n){
-        if (cnt == parseInt(n/2)){
+    if (currIdx == 2*n){
+        if (cnt ==n){
             // n/2개만큼 골랐다면 현재 고른 조합의 합 구함
             const currSum = combination.reduce((acc, num)=>acc+num);
-            if (currSum<res){
-                res = currSum;
+            const abs = Math.abs((sum-currSum)-currSum);
+            if (abs<res){
+                res = abs;
             }
         }
         return;
