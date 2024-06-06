@@ -45,7 +45,7 @@ function makeCombination(currIdx, cnt) {
     // 끝까지 조사하면 끝
     if (currIdx == m) {
         // 모든 경우에 대해서 가 봄
-        if (cnt > 0) {
+        if (cnt >= 0) {
             const tempRes = getRes(combination);
             if (tempRes == firstRes) {
                 if (combination.length < minRes) {
