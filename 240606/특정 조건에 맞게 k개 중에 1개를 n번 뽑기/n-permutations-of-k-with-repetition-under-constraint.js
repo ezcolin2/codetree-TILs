@@ -15,8 +15,9 @@ function makeCombination(cnt){
     
     // 1이상 k이하 숫자를 선택
     for (let i=1;i<=k;i++){
-        if (cnt>=2 && i == combination[cnt-1] == combination[cnt-2]){
-            return;
+        if (cnt>=2 && i == combination[cnt-1] && combination[cnt-1] == combination[cnt-2]){
+
+            continue;
         }
         combination.push(i);
         makeCombination(cnt+1);
