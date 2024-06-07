@@ -11,18 +11,17 @@ function dfs(idx, cnt){
             res = cnt;
         }
     }
-
-    if (idx==-1){
-
-    }
-    
     // 최대 점프 가능 횟수
     const maxJump = arr[idx];
-    
     // 갈 수 있는 곳 모두 가기
     for (let i=1;i<=maxJump;i++){
         dfs(idx+i, cnt+1);
     }
 }
 dfs(0, 0);
-console.log(res);
+if (res == Number.MAX_SAFE_INTEGER){
+    console.log(-1);
+}
+else{
+    console.log(res);
+}
