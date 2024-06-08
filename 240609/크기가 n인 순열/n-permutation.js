@@ -6,7 +6,7 @@ const isVisited = Array(n+1).fill(false);
 // currIdx 위치에 선택할 숫자
 const perm = [];
 function dfs(currIdx){
-    if (currIdx == 3){
+    if (currIdx == n){
         console.log(perm.join(' '));
         return
     }
