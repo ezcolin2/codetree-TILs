@@ -14,10 +14,10 @@ minVal = 1000000
 def dfs(cnt, before):
     global minVal
     # 모든 지점 다 방문하면 
-    if cnt == n:
+    if cnt == n-1:
         # 최소 비용 갱신
-        minVal = min(minVal, sum(combination) + arr[before][1])
-        print(combination)
+        if (arr[before][1] != 0):
+            minVal = min(minVal, sum(combination) + arr[before][1])
         return
     for i in range(1, n+1):
         # 방문하지 않았다면 방문
@@ -31,6 +31,6 @@ def dfs(cnt, before):
                 dfs(cnt+1, i)
                 combination.pop()
                 visited[i] = False
-
+visited[1] = True
 dfs(0, 1)
 print(minVal)
