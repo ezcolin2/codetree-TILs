@@ -17,6 +17,7 @@ def dfs(cnt, before):
     if cnt == n:
         # 최소 비용 갱신
         minVal = min(minVal, sum(combination) + arr[before][1])
+        print(combination)
         return
     for i in range(1, n+1):
         # 방문하지 않았다면 방문
