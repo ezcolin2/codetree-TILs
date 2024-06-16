@@ -18,7 +18,7 @@ def dfs(cnt):
         # 최소값 중 최대값 갱신
         res = max(res, min(combination))
         return
-    for i in range(n):
+    for i in range(cnt, n):
         for j in range(n):
             # row와 col 모두 방문하지 않았다면 방문
             if not rowVisited[i] and not colVisited[j]:
