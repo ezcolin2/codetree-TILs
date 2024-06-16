@@ -39,8 +39,8 @@ def getRangeCnt(k):
 
 # 모든 K에 대해서 구한 뒤 최대 안전 영역의 수 구함
 def solution():
-    res = 1
-    maxK = 0
+    res = 0
+    maxK = 1
     for k in range(1, 101):
         temp = getRangeCnt(k)
         # 안전 영역이 0이라는 뜻은 k가 아무리 올라가도 무조건 0 
@@ -54,4 +54,4 @@ def solution():
     return res, maxK
 
 res, maxK = solution()
-print(res, maxK)
+print(maxK, res)
