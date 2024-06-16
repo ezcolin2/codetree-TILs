@@ -1,6 +1,6 @@
 import sys
 input = sys.stdin.readline
-
+sys.setrecursionlimit(10000)
 n, m = map(int, input().split())
 arr = [list(map(int, input().split())) for _ in range(n)]
 # 동서남북
