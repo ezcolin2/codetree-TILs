@@ -15,6 +15,8 @@ for i in range(n):
         # 더함
         sum_val += arr[j]
         j += 1
-    res = min(res, j-i+1)
+    if sum_val < s:
+        break
+    res = min(res, j-i)
     sum_val -= arr[i]
 print(res)
