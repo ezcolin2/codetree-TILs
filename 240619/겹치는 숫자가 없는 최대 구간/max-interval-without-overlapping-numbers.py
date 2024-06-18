@@ -5,7 +5,7 @@ n = int(input())
 arr = list(map(int, input().split()))
 
 # 카운트 배열
-count_arr = [0 for _ in range(n)]
+count_arr = [0 for _ in range(100000)]
 
 # 최대 구간의 크기
 max_val = 0
