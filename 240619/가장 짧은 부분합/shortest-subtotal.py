@@ -19,4 +19,6 @@ for i in range(n):
         break
     res = min(res, j-i)
     sum_val -= arr[i]
+if res == 100000:
+    res = -1
 print(res)
