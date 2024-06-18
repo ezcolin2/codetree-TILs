@@ -13,16 +13,14 @@ j = 0
 for i in range(n):
     while j < n:
         # 중복이라면 
-        if count_arr[arr[j]]+1 >= 2:
+        if count_arr[arr[j]] == 1:
             break
-            
         # 개수 증가
         count_arr[arr[j]] += 1
+
         j+=1
     # 최대 구간 크기 갱신
-    if j>=n-1:
-        j-=1
-    max_val = max(max_val, j-i+1)
+    max_val = max(max_val, j-i)
     
     count_arr[arr[i]] -= 1
 print(max_val)
