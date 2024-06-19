@@ -25,7 +25,7 @@ while (left <= right):
     mid = (left+right)//2
     # 해당 거리를 만족하면 더 줄임
     if (is_possible(mid)):
-        res = mid
+        res = max(res, mid)
         left = mid+1
     # 만족하지 않으면 
     else:
