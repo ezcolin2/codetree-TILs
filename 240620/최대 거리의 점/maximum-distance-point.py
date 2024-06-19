@@ -19,7 +19,7 @@ def is_possible(distance):
     return False
 
 # 이진 탐색
-left, right = 0, 10**9
+left, right = 1, 10**9
 res = 0 # 결과
 while (left <= right):
     mid = (left+right)//2
