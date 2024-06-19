@@ -11,8 +11,8 @@ left, right = 0, n*10
 while (left<=right):
     mid = (left+right)//2
     # Moo가 나오면 1을 증가
-    if (mid %3 == 0 or mid % 5 == 0 or mid % 15 == 0):
-        mid+1
+    if (mid %3 == 0 or mid % 5 == 0):
+        mid+=1
     order = order_of_number(mid)
     # 찾았다면 
     if order == n:
