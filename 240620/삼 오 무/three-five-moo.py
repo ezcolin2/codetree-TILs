@@ -7,17 +7,17 @@ def order_of_number(num):
     return num- num//3 - num//5 + num//15
 
 # parametric search
-left, right = 0, n*10
+left, right = 1, n*10
 while (left<=right):
     mid = (left+right)//2
-    # Moo가 나오면 1을 증가
-    if (mid %3 == 0 or mid % 5 == 0):
-        mid+=1
     order = order_of_number(mid)
     # 찾았다면 
     if order == n:
-        print(mid)
-        exit()
+        if (mid %3!=0 and mid%5!=0):
+            print(mid)
+            exit()
+        right -= 1
+        continue
     elif order < n:
         left = mid+1
     else:
