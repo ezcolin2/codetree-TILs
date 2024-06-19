@@ -2,6 +2,7 @@ import sys
 input = sys.stdin.readline
 n, m = map(int, input().split())
 dots = [int(input()) for _ in range(n)]
+dots.sort()
 
 # 가장 인접한 두 물건의 거리를 만족하는 경우의 수의 존재 여부 판단
 def is_possible(distance):
