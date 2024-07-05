@@ -6,6 +6,8 @@ arr = [list(map(int, input().split())) for _ in range(n)]
 
 # k를 입력 받아서 이동할 dx, dy를 반환하는 함수
 def make_dx_dy(k):
+    if k==0:
+        return [0], [0]
     # 동서남북 -> 내부 정사각형
     dx = [0, 0, -k, k] + [j for _ in range(2*k-1) for j in range(-k+1, k)]
     dy = [k, -k, 0, 0] + [i for i in range(-k+1, k) for _ in range(2*k-1)]
@@ -38,6 +40,6 @@ def get_gold_without_loss(k):
             # 손해를 보지 않은 경우만 최대 금의 개수 갱신
             if (benefit >= 0):
                 max_gold = max(max_gold, cnt)
-for k in range(1, math.ceil(n/2)+1):
+for k in range(math.ceil(n/2)+1):
     get_gold_without_loss(k)
 print(max_gold)
