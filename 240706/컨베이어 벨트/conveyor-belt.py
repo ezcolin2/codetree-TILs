@@ -13,5 +13,5 @@ def rotate(n):
         arr[0] = temp
 rotate(t)
 
-print(' '.join(arr[0:3]))
-print(' '.join(arr[3:6]))
+print(' '.join(arr[0:len(arr)//2]))
+print(' '.join(arr[len(arr)//2:len(arr)]))
