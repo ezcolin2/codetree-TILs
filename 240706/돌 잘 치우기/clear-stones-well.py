@@ -39,6 +39,7 @@ def bfs(arr):
             nx, ny = x+dx[i], y+dy[i]
             # 갈 수 있다면
             if can_go(nx, ny, visited):
+                print(nx, ny)
                 queue.append([nx, ny])
                 visited[nx][ny] = True # 방문
                 visitedCnt += 1
