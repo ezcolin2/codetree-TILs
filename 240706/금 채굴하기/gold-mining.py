@@ -37,10 +37,11 @@ def get_gold_without_loss(k):
         for j in range(n):
 
             cnt = get_gold(i, j, dx, dy) # 개수 구함
+
             benefit = cnt * m - (k**2 + (k+1)**2) # 얻은 이득
             # 손해를 보지 않은 경우만 최대 금의 개수 갱신
             if (benefit >= 0):
                 max_gold = max(max_gold, cnt)
-for k in range(math.ceil(n/2)+1):
+for k in range(n):
     get_gold_without_loss(k)
 print(max_gold)
