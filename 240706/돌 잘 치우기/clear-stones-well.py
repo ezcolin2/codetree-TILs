@@ -31,7 +31,7 @@ def bfs(arr):
         queue.append([dot[0]-1, dot[1]-1])
     
     # 큐가 빌 때까지 반복
-    while(len(queue)>0):
+    while(queue):
         # 큐에서 값을 빼온다.
         x, y = queue.popleft()
         if can_go(x, y, visited):
