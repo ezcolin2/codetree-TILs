@@ -28,7 +28,7 @@ def bfs(arr):
     queue = deque() # 큐
     # 시작 점들을 모두 큐에 넣는다.
     for dot in startDots:
-        queue.append([dot[0]-1, dot[1]-1])
+        queue.append([dot[0], dot[1]])
     
     # 큐가 빌 때까지 반복
     while(queue):
