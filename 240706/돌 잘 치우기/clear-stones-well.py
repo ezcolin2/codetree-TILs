@@ -1,6 +1,6 @@
 import sys
 input = sys.stdin.readline
-
+from collections import deque
 # n : 격자의 크기 n x n
 # k : 시작 점의 수
 # m : 치워야 할 돌의 개수
@@ -25,7 +25,7 @@ def bfs(arr):
     visited = [[False for _ in range(n)] for _ in range(n)]
 
     visitedCnt = 0 # 지금까지 방문한 횟수
-    queue = [] # 큐
+    queue = deque() # 큐
     # 시작 점들을 모두 큐에 넣는다.
     for dot in startDots:
         queue.append([dot[0]-1, dot[1]-1])
@@ -33,17 +33,15 @@ def bfs(arr):
     # 큐가 빌 때까지 반복
     while(len(queue)>0):
         # 큐에서 값을 빼온다.
-        x, y = queue.pop()
-        if can_go(x, y, visited):
-            visited[x][y] = True # 방문
-            visitedCnt += 1
+        x, y = queue.popleft()
+
         for i in range(4):
             nx, ny = x+dx[i], y+dy[i]
             # 갈 수 있다면
             if can_go(nx, ny, visited):
+                queue.append([nx, ny])
                 visited[nx][ny] = True # 방문
                 visitedCnt += 1
-                queue.append([nx, ny])
     return visitedCnt
 
 max_val = 0
