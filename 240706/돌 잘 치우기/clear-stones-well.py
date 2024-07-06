@@ -34,7 +34,9 @@ def bfs(arr):
     while(len(queue)>0):
         # 큐에서 값을 빼온다.
         x, y = queue.pop()
-
+        if can_go(x, y, visited):
+            visited[x][y] = True # 방문
+            visitedCnt += 1
         for i in range(4):
             nx, ny = x+dx[i], y+dy[i]
             # 갈 수 있다면
