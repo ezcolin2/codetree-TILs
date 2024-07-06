@@ -14,15 +14,15 @@ for i in range(n):
             rockDots.append([i, j])
 # dx, dy 정의
 # 동서남북
-dx = [0, 0, 0, 1, -1]
-dy = [0, 1, -1, 0, 0]
-visited = [[False for _ in range(n)] for _ in range(n)]
+dx = [0, 0, 1, -1]
+dy = [1, -1, 0, 0]
 
 # 방문 여부
-def can_go(x, y):
+def can_go(x, y, visited):
     return 0<=x<n and 0<=y<n and not visited[x][y] and arr[x][y] == 0
 # bfs 방식으로 k개의 시작점으로부터 방문이 가능한 서로 다른 칸의 수를 반환하는 함수
 def bfs(arr):
+    visited = [[False for _ in range(n)] for _ in range(n)]
 
     visitedCnt = 0 # 지금까지 방문한 횟수
     queue = [] # 큐
@@ -35,15 +35,13 @@ def bfs(arr):
         # 큐에서 값을 빼온다.
         x, y = queue.pop()
 
-        for i in range(5):
+        for i in range(4):
             nx, ny = x+dx[i], y+dy[i]
             # 갈 수 있다면
-            if can_go(nx, ny):
+            if can_go(nx, ny, visited):
                 visited[nx][ny] = True # 방문
                 visitedCnt += 1
                 queue.append([nx, ny])
-    if(visitedCnt == 9):
-        print(arr)
     return visitedCnt
 
 max_val = 0
