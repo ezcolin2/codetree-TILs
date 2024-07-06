@@ -29,7 +29,9 @@ def bfs(arr):
     # 시작 점들을 모두 큐에 넣는다.
     for dot in startDots:
         queue.append([dot[0]-1, dot[1]-1])
-    print(queue)
+    if n== 77:
+
+        print(queue)
     # 큐가 빌 때까지 반복
     while(queue):
         # 큐에서 값을 빼온다.
