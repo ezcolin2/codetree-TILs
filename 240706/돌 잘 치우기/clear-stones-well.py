@@ -29,9 +29,7 @@ def bfs(arr):
     # 시작 점들을 모두 큐에 넣는다.
     for dot in startDots:
         queue.append([dot[0]-1, dot[1]-1])
-    if n== 77:
 
-        print(queue)
     # 큐가 빌 때까지 반복
     while(queue):
         # 큐에서 값을 빼온다.
@@ -54,11 +52,12 @@ max_val = 0
 def make_combination(idx, cnt):
     global max_val
     if idx >= len(rockDots):
+        if cnt == m:
+            max_val = max(max_val, bfs(arr))
+        
         return
     # m개를 모두 선택했다면
-    if cnt == m:
-        max_val = max(max_val, bfs(arr))
-        return
+
 
     x, y = rockDots[idx]
 
