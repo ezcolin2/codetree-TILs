@@ -29,7 +29,7 @@ def bfs(arr):
     # 시작 점들을 모두 큐에 넣는다.
     for dot in startDots:
         queue.append([dot[0]-1, dot[1]-1])
-    
+    print(queue)
     # 큐가 빌 때까지 반복
     while(queue):
         # 큐에서 값을 빼온다.
@@ -41,8 +41,7 @@ def bfs(arr):
             nx, ny = x+dx[i], y+dy[i]
             # 갈 수 있다면
             if can_go(nx, ny, visited):
-                if (n==77):
-                    print(77)
+
                 visited[nx][ny] = True # 방문
                 visitedCnt += 1
                 queue.append([nx, ny])
