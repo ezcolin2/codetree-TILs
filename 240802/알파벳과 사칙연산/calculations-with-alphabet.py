@@ -3,7 +3,9 @@ from collections import deque
 input = sys.stdin.readline
 
 input_arr = deque(list(input()))
-
+if len(input_arr)==1:
+    print(4)
+    exit()
 # 순서대로 a, b, c, d, e, f에 대한 값
 arr = []
 
