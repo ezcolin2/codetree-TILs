@@ -39,7 +39,7 @@ def calculate():
             res = first * second
         new_arr.appendleft(res)
     return res
-cal_res = 0
+cal_res = -sys.maxint
 # 선택
 def choose(num):
     global cal_res
