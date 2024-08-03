@@ -32,7 +32,7 @@ def is_possible(d):
             max_cnt = max(max_cnt, cnt)
             cnt = dic[standard]
             standard = keys[i]
-    return max_cnt >= math.floor((n**2)/2)
+    return max_cnt > math.floor((n**2)/2)
 
 min_res = sys.maxsize
 # 이진 탐색 시작 
