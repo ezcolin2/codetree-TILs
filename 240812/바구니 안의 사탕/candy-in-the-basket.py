@@ -3,12 +3,9 @@ input = sys.stdin.readline
 n, k = map(int, input().split())
 arr = [tuple(map(int, input().split())) for _ in range(n)]
 
-# 바구나 좌표를 기준으로 오름차순 정렬
-arr.sort(key = lambda x : x[1])
-
 # 누적 합의 범위는 사탕이 들어있는 마지막 바구니의 위치
 # 1부터 시작하므로 1 추가
-prefix_sum = [0 for _ in range(arr[-1][1] + 1)]
+prefix_sum = [0 for _ in range(20000001)]
 
 # arr를 순회하면서 해당 위치에 사탕 개수 추가
 for candy, location in arr:
