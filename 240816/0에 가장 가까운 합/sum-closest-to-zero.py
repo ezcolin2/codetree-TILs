@@ -23,4 +23,8 @@ while left < right:
     # 0보다 작다면 left를 늘여서 0에 더 가깝게 할 수 있는지 확인
     elif sum_val < 0:
         left += 1
+    
+    # 0이라면 끝냄
+    else:
+        break
 print(res)
