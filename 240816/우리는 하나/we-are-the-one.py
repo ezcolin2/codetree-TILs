@@ -33,7 +33,7 @@ def get_different_cities(selected_locations):
     return sum([row.count(True) for row in visited])
 
 
-max_res = 0
+max_res = k
 # 현재까지 selected_cnt개를 뽑은 상태에서 [idx//n][idx%n] 좌표를 뽑을 것인지
 def choose(idx, selected_cnt):
     global max_res
