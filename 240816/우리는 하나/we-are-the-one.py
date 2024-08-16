@@ -18,6 +18,8 @@ selected_locations = []
 def get_different_cities(selected_locations):
     # 방문 여부
     visited = [[False]*n for _ in range(n)]
+    for x, y in selected_locations:
+        visited[x][y] = True
 
     # 선택된 도시들을 모두 큐에 넣음 
     queue = [location for location in selected_locations]
