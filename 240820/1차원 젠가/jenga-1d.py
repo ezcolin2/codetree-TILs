@@ -14,10 +14,10 @@ def eliminate(arr, s, e):
     for i in arr:
         if i != 0:
             new_arr.append(i)
+    new_arr.reverse()
     return new_arr
 arr = eliminate(arr, s1, e1)
 arr = eliminate(arr, s2, e2)
-arr.reverse()
 print(len(arr))
 for i in arr:
     print(i)
