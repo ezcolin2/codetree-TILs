@@ -1,6 +1,9 @@
 import sys
 input = sys.stdin.readline
 n, m = map(int, input().split())
+if m==1:
+    print(0)
+    exit()
 arr = [int(input()) for _ in range(n)]
 
 def bomb(arr):
