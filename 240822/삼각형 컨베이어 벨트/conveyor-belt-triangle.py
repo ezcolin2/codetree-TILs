@@ -1,6 +1,7 @@
 import sys
 input = sys.stdin.readline
 n, t = map(int, input().split())
+t %= n*3
 arr = []
 for _ in range(3):
     arr += list(map(int, input().split()))
