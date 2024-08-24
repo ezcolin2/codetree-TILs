@@ -33,7 +33,9 @@ while 0<=x<n and 0<=y<n:
     visited[x][y] = True
     # 현재 정면 방향으로 이동했을 때 좌표
     nx, ny = x+dx[direction_idx], y+dy[direction_idx]
-    
+    if nx<0 or nx>=n or ny<0 or ny>=n:
+        move_cnt += 1
+        break
 
 
     # 만약 정면 방향에 벽이 있다면
