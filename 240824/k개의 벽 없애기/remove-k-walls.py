@@ -27,10 +27,10 @@ def bfs(start_x, start_y, end_x, end_y):
     for i in range(n):
         for j in range(n):
             visited[i][j] = False
-    queue = [(start_x, start_y)]
+    queue = deque([(start_x, start_y)])
     visited[start_x][start_y] = True
     while queue:
-        x, y = queue.pop()
+        x, y = queue.popleft()
         for i in range(4):
             nx, ny = x+dx[i], y+dy[i]    
             if can_go(nx, ny):
