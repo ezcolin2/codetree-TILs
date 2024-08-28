@@ -16,8 +16,9 @@ for _ in range(m):
     y_root = find_root(y)
     uf[x_root] = y_root
 
-x, y = map(int, input().split())
+sequence = map(int, input().split())
 
-
-# 이동 가능하다는 뜻은 둘의 root가 같다는 뜻
-print(1 if find_root(x) == find_root(y) else 0)
+s = set()
+for i in sequence:
+    s.add(find_root(i))
+print(1 if len(s)==1 else 0)
