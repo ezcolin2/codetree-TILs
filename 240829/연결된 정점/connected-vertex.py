@@ -1,5 +1,6 @@
 import sys
 input = sys.stdin.readline
+sys.set_int_max_str_digits(10000)
 n, m = map(int, input().split())
 # union find
 uf = [i for i in range(n+1)]
