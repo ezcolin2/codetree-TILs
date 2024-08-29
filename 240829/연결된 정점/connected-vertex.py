@@ -1,6 +1,5 @@
 import sys
 input = sys.stdin.readline
-sys.set_int_max_str_digits(10000)
 n, m = map(int, input().split())
 # union find
 uf = [i for i in range(n+1)]
@@ -20,8 +19,9 @@ def find_root(x):
 def union(a, b):
     root_a = find_root(a)
     root_b = find_root(b)
-    uf[root_a] = root_b
-    group_size[root_b] += group_size[root_a]
+    if root_a != root_b:
+        uf[root_a] = root_b
+        group_size[root_b] += group_size[root_a]
 
 for _ in range(m):
     op = list(input().split())
