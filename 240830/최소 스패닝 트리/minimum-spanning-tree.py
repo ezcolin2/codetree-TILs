@@ -7,10 +7,10 @@ def find_root(x):
         return x
     uf[x] = find_root(uf[x])
     return uf[x]
-
+arr = [list(map(int, input().split())) for _ in range(m)]
+arr.sort(key = lambda x:x[2])
 res = 0
-for _ in range(m):
-    a, b, w = map(int, input().split())
+for a, b, w in arr:
     root_a = find_root(a)
     root_b = find_root(b)
     # 서로 다르다면
