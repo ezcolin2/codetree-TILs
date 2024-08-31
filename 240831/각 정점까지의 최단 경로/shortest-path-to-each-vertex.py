@@ -29,4 +29,4 @@ while queue:
             heapq.heappush(queue, (dist[new_number], new_number))
 
 for i in range(1, n+1):
-    print(dist[i])
+    print(dist[i] if dist[i] != INF else -1)
