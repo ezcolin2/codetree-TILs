@@ -21,4 +21,4 @@ res = graph[v1][e] + graph[v2][e]
 # 경유하는 점 찾기 
 for i in range(1, n+1):
     res = min(res, graph[v1][i] + graph[v2][i] + graph[i][e])
-print(res)
+print(res if res != INF else -1)
