@@ -30,8 +30,11 @@ root_a = find_root(a)
 a_cnt = sz[root_a][1]
 # 그룹 수 내림차순 정렬
 sz.sort(key = lambda x:(-x[1], -x[0]))
+
+# 선택한 간선 수
+selected_cnt = 0
 # 그룹 수가 많은 것부터 합친다.
-for idx, cnt in sz[:k]:
+for idx, cnt in sz:
     # a와 연결할 그룹을 찾는다. 
     root_a = find_root(a)
     root_b = find_root(b)
@@ -42,6 +45,12 @@ for idx, cnt in sz[:k]:
     # 만약 b와 같은 그룹이라면 패스
     if root_b == temp_root:
         continue
+    # idx가 0인 것은 더미 데이터
+    if idx == 0:
+        continue
     uf[temp_root] = root_a
     a_cnt += cnt
+    selected_cnt += 1
+    if selected_cnt >= k:
+        break
 print(a_cnt)
