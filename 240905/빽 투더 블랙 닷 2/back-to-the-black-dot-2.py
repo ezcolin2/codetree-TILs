@@ -59,6 +59,6 @@ def find_min_distance(n, m, red_a, red_b, graph):
             continue
         temp_min_distance = get_min_distance(dist_from_red_a, dist_from_red_b, red_a, red_b, i)
         min_distance = min(min_distance, temp_min_distance)
-    return min_distance
+    return min_distance if min_distance != INF else -1
 
 print(find_min_distance(n, m, red_a, red_b, graph))
