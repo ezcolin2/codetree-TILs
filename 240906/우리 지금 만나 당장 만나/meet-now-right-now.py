@@ -37,4 +37,4 @@ def parametric_search(n, locations, speeds):
             left = mid+1
     return min_time
 
-print("{:.4f}".format(round(parametric_search(n, locations, speeds)/100000)))
+print("{:.4f}".format(round(parametric_search(n, locations, speeds)/10/10000)))
