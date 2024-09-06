@@ -1,12 +1,12 @@
 import sys
 input = sys.stdin.readline
 n = int(input())
-locations = list(map(int, input().split()))
+locations = list(map(lambda x:int(x)*10000, input().split()))
 speeds = list(map(int, input().split()))
 
 # 특정 점에 대해서 x초 동안 이동 가능한 위치의 범위를 반환한다.
 def get_location_range(n, location, speed, x):
-    return [max(0, location-speed*x), min(1000000000, location+speed*x)]
+    return [max(0, location-speed*x), min(10000000000000, location+speed*x)]
 
 # 모두 도착하는 데 걸리는 시간이 x초 이상인 도착점의 겹치는 범위 반환
 # 만약 범위[0] > 범위[1]이라면 해당하는 도착점이 없는 것 
@@ -22,7 +22,7 @@ def get_overrapped_location_range(n, locations, speeds, x):
 
 # 이진 탐색
 def parametric_search(n, locations, speeds):
-    left, right = 1, 1000000000
+    left, right = 1, 10000000000000
     res_location_range=[]
     min_time = sys.maxsize
     while left<=right:
@@ -35,17 +35,6 @@ def parametric_search(n, locations, speeds):
         # 만약 범위가 잘못되었다면 불가능
         else:
             left = mid+1
-    res = sys.maxsize
-    for i in range(res_location_range[0], res_location_range[1]+1):
-        res = min(res, get_min_time(n, locations, speeds, i))
-    return res
+    return min_time
 
-# 도착점의 위치가 주어질 때 걸리는 최소 시간 반환
-def get_min_time(n, locations, speeds, x):
-    max_time = 0
-    for i in range(n):
-        max_time = max(max_time, (abs(locations[i] - x))/speeds[i])
-    # for i in range(location_range[0], location_range[1]+1):
-    #     min_time = min(min_time, (abs(i-x)/speeds[i]))
-    return max_time
-print("{:.4f}".format(round(parametric_search(n, locations, speeds), 4)))
+print("{:.4f}".format(parametric_search(n, locations, speeds)/10000))
