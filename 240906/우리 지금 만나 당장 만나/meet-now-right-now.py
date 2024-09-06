@@ -22,7 +22,7 @@ def get_overrapped_location_range(n, locations, speeds, x):
 
 # 이진 탐색
 def parametric_search(n, locations, speeds):
-    left, right = 1, 10000000000000
+    left, right = 0, 10000000000000
     res_location_range=[]
     min_time = sys.maxsize
     while left<=right:
