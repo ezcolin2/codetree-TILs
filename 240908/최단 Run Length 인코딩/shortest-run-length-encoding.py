@@ -8,7 +8,7 @@ def right_shift(input_string, count):
     res_list = [0]*length
     # 횟수만큼 밀어서 넣기
     for i in range(length):
-        res_list[i] = input_list[i-2]
+        res_list[i] = input_list[i-count]
     return ''.join(res_list)
 
 # Run-Length Encodoing을 적용한 후 생성된 문자열 길이
