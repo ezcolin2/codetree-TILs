@@ -33,7 +33,7 @@ while queue:
     temp_cost, temp_number, temp_time = heapq.heappop(queue)
     
     # 만약 다르면 패스 
-    if min_cost[temp_number] != temp_cost:
+    if min_cost[temp_number] != temp_cost or min_time[temp_number] != temp_time:
         continue
 
     # 연결된 모든 점의 최소 값 갱신
