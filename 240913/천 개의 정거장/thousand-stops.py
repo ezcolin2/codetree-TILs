@@ -50,5 +50,7 @@ while queue:
         elif min_cost[next_cnt] == temp_cost + next_cost:
             # 최소 시간 갱신
             min_time[next_cnt] = min(min_time[next_cnt], temp_time + next_time)
-
-print(min_cost[b], min_time[b])
+if min_cost[b] == INF:
+    print(-1, -1)
+else:
+    print(min_cost[b], min_time[b])
