@@ -19,24 +19,24 @@ for _ in range(n):
     # 해당 경로 중 두 개를 골라서 간선으로 만든다.
     for i in range(len(arr)):
         for j in range(i+1, len(arr)):
-            graph[arr[i]].append((cost, arr[j], j-i))
+            graph[arr[i]].append((cost, j-i, arr[j]))
 
 # 큐 생성
 queue = []
 min_cost[a] = 0
 min_time[a] = 0
-heapq.heappush(queue, (0, a, 0))
+heapq.heappush(queue, (0, 0, a))
 
 while queue:
     # 최소 값을 가진 점 가져오기
-    temp_cost, temp_number, temp_time = heapq.heappop(queue)
+    temp_cost, temp_time, temp_number = heapq.heappop(queue)
     
     # 만약 다르면 패스 
     if min_cost[temp_number] != temp_cost or min_time[temp_number] != temp_time:
         continue
 
     # 연결된 모든 점의 최소 값 갱신
-    for next_cost, next_cnt, next_time in graph[temp_number]:
+    for next_cost, next_time, next_cnt in graph[temp_number]:
         # 만약 저장된 최소 비용보다 작다면
         if min_cost[next_cnt] > temp_cost + next_cost:
             # 최소 비용 갱신
@@ -44,13 +44,7 @@ while queue:
             # 최소 시간 갱신
             min_time[next_cnt] = temp_time + next_time
             # 우선순위 큐에 넣기
-            heapq.heappush(queue, (min_cost[next_cnt], next_cnt, min_time[next_cnt]))
-        # 만약 저장된 최소 비용과 같다면
-        elif min_cost[next_cnt] == temp_cost + next_cost:
-            # 최소 시간 갱신
-            min_time[next_cnt] = min(min_time[next_cnt], temp_time + next_time)
-            # 우선순위 큐에 넣기
-            heapq.heappush(queue, (min_cost[next_cnt], next_cnt, min_time[next_cnt]))
+            heapq.heappush(queue, (min_cost[next_cnt], min_time[next_cnt], next_cnt))
 
 if min_cost[b] == INF:
     print(-1, -1)
