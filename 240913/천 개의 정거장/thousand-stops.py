@@ -3,7 +3,6 @@ import heapq
 input = sys.stdin.readline
 # 최대 값
 INF = sys.maxsize
-
 # 인접 리스트 그래프
 graph = [[] for _ in range(1001)]
 
@@ -50,6 +49,9 @@ while queue:
         elif min_cost[next_cnt] == temp_cost + next_cost:
             # 최소 시간 갱신
             min_time[next_cnt] = min(min_time[next_cnt], temp_time + next_time)
+            # 우선순위 큐에 넣기
+            heapq.heappush(queue, (min_cost[next_cnt], next_cnt, min_time[next_cnt]))
+
 if min_cost[b] == INF:
     print(-1, -1)
 else:
