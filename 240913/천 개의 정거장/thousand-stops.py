@@ -38,11 +38,11 @@ while queue:
     # 연결된 모든 점의 최소 값 갱신
     for next_cost, next_time, next_cnt in graph[temp_number]:
         # 만약 저장된 최소 비용보다 작다면
-        if min_cost[next_cnt] > temp_cost + next_cost:
+        if min_cost[next_cnt] >= temp_cost + next_cost:
             # 최소 비용 갱신
             min_cost[next_cnt] = temp_cost + next_cost
             # 최소 시간 갱신
-            min_time[next_cnt] = temp_time + next_time
+            min_time[next_cnt] = min(min_time[next_cnt], temp_time + next_time)
             # 우선순위 큐에 넣기
             heapq.heappush(queue, (min_cost[next_cnt], min_time[next_cnt], next_cnt))
 
