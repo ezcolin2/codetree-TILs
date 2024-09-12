@@ -7,10 +7,7 @@ INF = sys.maxsize
 graph = [[] for _ in range(1001)]
 
 # 해당 점까지 도달하는데 드는 최단 비용
-min_cost = [INF]*1001
-
-# 해당 점까지 도달하는데 드는 최단 비용이 여러 개라면 그 중 최단 시간
-min_time = [INF]*1001
+dist = [(INF, INF)]*1001
 
 a, b, n = map(int, input().split())
 for _ in range(n):
@@ -23,8 +20,7 @@ for _ in range(n):
 
 # 큐 생성
 queue = []
-min_cost[a] = 0
-min_time[a] = 0
+dist[a] = (0, 0)
 heapq.heappush(queue, (0, 0, a))
 
 while queue:
@@ -32,21 +28,18 @@ while queue:
     temp_cost, temp_time, temp_number = heapq.heappop(queue)
     
     # 만약 다르면 패스 
-    if min_cost[temp_number] != temp_cost or min_time[temp_number] != temp_time:
+    if dist[temp_number][0] != temp_cost or dist[temp_number][1] != temp_time:
         continue
 
     # 연결된 모든 점의 최소 값 갱신
     for next_cost, next_time, next_cnt in graph[temp_number]:
         # 만약 저장된 최소 비용보다 작다면
-        if min_cost[next_cnt] >= temp_cost + next_cost:
+        if dist[next_cnt] >= (temp_cost + next_cost, temp_time + next_time):
             # 최소 비용 갱신
-            min_cost[next_cnt] = temp_cost + next_cost
-            # 최소 시간 갱신
-            min_time[next_cnt] = min(min_time[next_cnt], temp_time + next_time)
-            # 우선순위 큐에 넣기
-            heapq.heappush(queue, (min_cost[next_cnt], min_time[next_cnt], next_cnt))
+            dist[next_cnt] = (temp_cost + next_cost, temp_time + next_time)
+            heapq.heappush(queue, (dist[next_cnt][0], dist[next_cnt][1], next_cnt))
 
-if min_cost[b] == INF:
+if dist[b][0] == INF:
     print(-1, -1)
 else:
-    print(min_cost[b], min_time[b])
+    print(dist[b][0], dist[b][1])
