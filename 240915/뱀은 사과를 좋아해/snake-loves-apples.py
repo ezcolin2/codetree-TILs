@@ -67,11 +67,12 @@ def get_next_head_location(current_head_location, direction):
     head_nx, head_ny = head_x + dx[direction_idx], head_y + dy[direction_idx]
     return (head_nx, head_ny)
 
-# 이동할 수 있는지
-def is_valid_location(snake_directions, next_head_location):
-    nx, ny = next_head_location
+# 괜찮은 방향인지
+def is_valid_location(snake_directions, next_head_location, current_tail_location):
+    head_nx, head_ny = next_head_location
+    tail_x, tail_y = current_tail_location
     # 범위를 벗어나지 않고 겹치지 않아야 함
-    return 1<=nx<=n and 1<=ny<=n and snake_directions[nx][ny] == 0
+    return 1<=head_nx<=n and 1<=head_ny<=n and snake_directions[head_nx][head_ny] == 0 and not(head_nx == tail_x and head_ny == tail_y)
 
 # 흐른 시간
 time = 0
@@ -82,8 +83,9 @@ for direction, count in directions:
         time += 1
         # 가장 먼저 다음 머리의 위치를 구한다.
         next_head_location = get_next_head_location(current_head, direction)
+        head_nx, head_ny = next_head_location
         # 만약 다음 머리로 이동이 불가능하다면 끝난다.
-        if not is_valid_location(snake_directions, next_head_location):
+        if head_nx < 1 or head_nx > n or head_ny < 1 or head_ny > n:
             print(time)
             exit()
         head_nx, head_ny = next_head_location
@@ -92,9 +94,16 @@ for direction, count in directions:
         current_head = next_head_location
         # 사과가 있다면 끝낸다.
         if apples[head_nx][head_ny]:
+            apples[head_nx][head_ny] = 0
             continue
         # 사과가 없다면 꼬리를 자른다.
         next_tail_location = get_next_tail_location(current_tail, snake_directions[current_tail[0]][current_tail[1]])
         snake_directions = slice_tail(snake_directions, current_tail)
         current_tail = next_tail_location
+
+        # 만약 부딪혔으면 끝낸다.
+        
+        if snake_directions[current_head[0]][current_head[1]] != 0:
+            print(time)
+            exit()
 print(time)
