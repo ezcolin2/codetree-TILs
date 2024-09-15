@@ -59,7 +59,7 @@ def add_same_number(arr, direction):
                     new_arr[row][col-1]*=2
     elif direction == 'U':
         for col in range(0, 4):
-            for row in range(0, 4):
+            for row in range(1, 4):
                 if new_arr[row][col] == new_arr[row-1][col]:
                     new_arr[row][col] = 0
                     new_arr[row-1][col]*=2
