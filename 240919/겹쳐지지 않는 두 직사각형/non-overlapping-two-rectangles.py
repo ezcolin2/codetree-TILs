@@ -62,9 +62,9 @@ def get_max_sum(arr):
         for a_row_end_idx in range(a_row_start_idx, n+1):
             for a_col_start_idx in range(1, n+1):
                 for a_col_end_idx in range(a_col_start_idx, n+1):
-                    for b_row_start_idx in range(a_row_start_idx, n+1):
+                    for b_row_start_idx in range(1, n+1):
                         for b_row_end_idx in range(b_row_start_idx, n+1):
-                            for b_col_start_idx in range(a_col_start_idx, n+1):
+                            for b_col_start_idx in range(1, n+1):
                                 for b_col_end_idx in range(b_col_start_idx, n+1):
                                     if is_overlapped(
                                         a_row_start_idx,
@@ -77,7 +77,6 @@ def get_max_sum(arr):
                                         b_col_end_idx
                                     ):
                                         continue
-
                                     max_sum = max(
                                         max_sum, 
                                         get_prefix_sum(
