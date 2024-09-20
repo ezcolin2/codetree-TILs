@@ -14,12 +14,9 @@ def find_root(x):
 
 # 모든 정점에 연결된 점들을 보고 같은 그룹인지 확인
 for node in range(1, n+1):
-    # 첫 번째 연결된 노드
-    if not graph[node]:
-        continue
-    temp_root = find_root(graph[node][0])
     for next_node in graph[node]:
         root_node = find_root(node)
+        temp_root = find_root(graph[node][0])
         root_next_node = find_root(next_node)
         # 같은 그룹이면 모순
         if root_node == root_next_node:
