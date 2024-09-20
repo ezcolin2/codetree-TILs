@@ -23,5 +23,5 @@ for node in range(1, n+1):
             print(0)
             exit()
         # 모순이 아니면 first_next_node를 루트로
-        uf[next_node] = temp_root
+        uf[root_next_node] = temp_root
 print(1)
