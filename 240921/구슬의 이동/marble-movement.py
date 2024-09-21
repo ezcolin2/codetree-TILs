@@ -115,4 +115,4 @@ def get_remain_marble_count(arr):
 for _ in range(t):
     arr = move_one_second(arr)
     arr = remove_duplicate_marbles(arr, k)
-    print(get_remain_marble_count(arr))
+print(get_remain_marble_count(arr))
