@@ -41,6 +41,21 @@ def move_opposite_position(n, x):
         return -x+2
 
     return x
+def get_next_location_and_direction(n, x, y, speed, direction):
+    for _ in range(speed):
+
+        nx, ny = x+get_dx[direction], y+get_dy[direction]
+        # 끝에 도달했다면
+        if nx == 0 or nx == n+1 or ny == 0 or ny == n+1:
+            # 반대 방향으로 바꾸고
+            direction = get_opposite_direction[direction]
+            nx, ny = nx+get_dx[direction], ny+get_dy[direction]
+            nx, ny = nx+get_dx[direction], ny+get_dy[direction]
+            # 두 번 이동
+        x, y = nx, ny
+    return x, y, direction
+    
+        
 
 def get_next_direction(n, x, y, speed, direction):
     # 이동할 횟수 줄이기
@@ -51,6 +66,7 @@ def get_next_direction(n, x, y, speed, direction):
     # 만약 U 또는 D라면
     if dx != 0:
         x = x + dx*speed
+
         # 양의 방향으로 초과했다면
         if x > n:
             return get_opposite_direction[direction]
@@ -91,8 +107,9 @@ def move_one_second(arr):
             cnt = len(arr[i][j])
             for _ in range(cnt):
                 d, v, number = new_arr[i][j].popleft()
-                nx, ny = get_next_location(n, i, j, v, d)
-                nd = get_next_direction(n, i, j, v, d)
+                # nx, ny = get_next_location(n, i, j, v, d)
+                # nd = get_next_direction(n, i, j, v, d)
+                nx, ny, nd = get_next_location_and_direction(n, i, j, v, d)
                 new_arr[nx][ny].append((nd, v, number))
     return new_arr
 
