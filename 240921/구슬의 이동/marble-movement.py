@@ -33,10 +33,13 @@ get_dy = {
 def move_opposite_position(n, x):
     # 양의 방향으로 초과했다면
     if x > n:
+
         return n-(x-n)
     # 음의 방향으로 초과했다면
     if x < 1:
+
         return -x+2
+
     return x
 
 def get_next_direction(n, x, y, speed, direction):
@@ -73,7 +76,8 @@ def get_next_location(n, x, y, speed, direction):
     nx, ny = x + dx*speed, y + dy*speed
 
     # 초과했다면 반대 방향으로 
-    nx, ny = move_opposite_position(n, nx), move_opposite_position(n, ny)
+    while not (1<=nx<=n and 1<=ny<=n): 
+        nx, ny = move_opposite_position(n, nx), move_opposite_position(n, ny)
     return nx, ny
 
 # 일 초 동안 움직임
