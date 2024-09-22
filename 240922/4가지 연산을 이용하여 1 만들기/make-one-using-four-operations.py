@@ -14,14 +14,18 @@ def bfs(n):
             return cnt
         # 빼기
         if number -1 > 0 and not visited[number-1]:
+            visited[number-1] = True
             queue.append((number-1, cnt+1))
         # 더하기
         if number + 1 <= n and not visited[number+1]:
+            visited[number+1] = True
             queue.append((number+1, cnt+1))
         # 2로 나누기
         if number%2 == 0 and not visited[number//2]:
+            visited[number//2] = True
             queue.append((number//2, cnt+1))
         # 3으로 나누기
         if number%3 == 0 and not visited[number//3]:
+            visited[number//3] = True
             queue.append((number//3, cnt+1))
 print(bfs(n))
