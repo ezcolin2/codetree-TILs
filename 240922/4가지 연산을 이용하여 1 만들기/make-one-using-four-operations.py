@@ -5,7 +5,7 @@ n = int(input())
 
 # n을 1로 만들기 위해 최소
 def bfs(n):
-    visited = [False]*(n+1)
+    visited = [False]*(2*n)
     visited[n] = True
     queue = deque([(n, 0)])
     while queue:
@@ -17,7 +17,7 @@ def bfs(n):
             visited[number-1] = True
             queue.append((number-1, cnt+1))
         # 더하기
-        if number + 1 <= n and not visited[number+1]:
+        if number + 1 < len(visited) and not visited[number+1]:
             visited[number+1] = True
             queue.append((number+1, cnt+1))
         # 2로 나누기
