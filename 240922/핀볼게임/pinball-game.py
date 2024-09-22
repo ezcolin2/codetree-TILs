@@ -56,7 +56,7 @@ def get_pinball_time(arr, start_x, start_y, start_direction_idx):
 # 최대 시간 반환
 def get_max_time(arr):
     max_time = 0
-    n = len(arr)
+    n = len(arr)-2
     # 동
     for i in range(1, n+1):
         temp_time = get_pinball_time(arr, i, 0, 0)
