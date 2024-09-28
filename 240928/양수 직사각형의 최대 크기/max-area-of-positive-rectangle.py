@@ -65,4 +65,8 @@ def get_max_size(arr):
                     # 양수 직사각형이면 크기 갱신
                     max_size = max(max_size, (end_x-start_x+1) * (end_y-start_y+1))
     return max_size
-print(get_max_size(arr))
+res = get_max_size(arr)
+if res == 0:
+    print(-1)
+    exit()
+print(res)
