@@ -8,7 +8,7 @@ def get_prefix_sum(arr):
     for i in range(1, n+1):
         for j in range(1, m+1):
             # 음수면 개수 1
-            if arr[i][j] < 0:
+            if arr[i][j] <= 0:
                 prefix_sum[i][j] = 1
             # 누적합 구하기
             prefix_sum[i][j] += prefix_sum[i-1][j] + prefix_sum[i][j-1] - prefix_sum[i-1][j-1]
