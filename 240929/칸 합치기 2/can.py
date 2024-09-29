@@ -9,6 +9,7 @@ def find_max_root(x):
     if max_uf[x] == x:
         return x
     max_uf[x] = find_max_root(max_uf[x])
+    return max_uf[x]
 def find_min_root(x):
     if min_uf[x] == x:
         return x
