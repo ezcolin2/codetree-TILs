@@ -1,6 +1,6 @@
-# 우하
-dx = [0, 1]
-dy = [1, 0]
+# 상하좌우
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
 # 최대 높이, 최소 높이  차이가 difference 이하로 이동하는게 가능한지
 def is_possible(arr, difference):
     n = len(arr)
@@ -16,7 +16,7 @@ def is_possible(arr, difference):
     while stack:
         # 스택에서 꺼낸다.
         x, y = stack.pop()
-        for i in range(2):
+        for i in range(4):
             nx, ny = x+dx[i], y+dy[i]
             # 범위에서 벗어나거나 방문했다면 스킵
             if nx<0 or nx>=n or ny<0 or ny>=m or visited[nx][ny]:
