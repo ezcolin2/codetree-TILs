@@ -38,7 +38,7 @@ def djikstra(graph, start, end, x):
             next_min_c = min(curr_min_c, next_c)
             next_distance = next_sum_l + x/next_min_c
             # 시간이 더 적게 걸린다면 갱신
-            if distance[next_node] > next_distance:
+            if distance[next_node] >= next_distance:
                 distance[next_node] = next_distance
                 
                 # 큐에도 넣기
