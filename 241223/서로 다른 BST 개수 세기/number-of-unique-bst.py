@@ -2,7 +2,7 @@
 def get_number_of_BST(dp, n):
     res = 0
     for i in range(n):
-        res += d[i] * dp[n-i-1]
+        res += dp[i] * dp[n-i-1]
     return res
 dp = [0]*20
 dp[1] = 1
