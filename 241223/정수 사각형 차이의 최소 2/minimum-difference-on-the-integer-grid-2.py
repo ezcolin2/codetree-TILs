@@ -11,10 +11,8 @@ def solve(arr, lower_bound):
 
     # 위쪽과 왼쪽 가장자리는 경로가 하나
     for i in range(1, n):
-        if max_dp[i][0] != MAX_VALUE:
-            max_dp[i][0] = max(max_dp[i-1][0], arr[i][0])
-        elif max_dp[0][i] != MAX_VALUE:
-            max_dp[0][i] = max(max_dp[0][i-1], arr[0][i])
+        max_dp[i][0] = max(max_dp[i-1][0], max_dp[i][0])
+        max_dp[0][i] = max(max_dp[0][i-1], max_dp[0][i])
     
     # 시작
     for i in range(1, n):
