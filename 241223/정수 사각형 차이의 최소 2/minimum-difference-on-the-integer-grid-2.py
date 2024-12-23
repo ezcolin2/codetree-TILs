@@ -26,6 +26,6 @@ n = int(input())
 arr = [list(map(int, input().split())) for _ in range(n)]
 res = MAX_VALUE
 
-for i in range(1, n+1):
+for i in range(1, 101):
     res = min(res, solve(arr, i))
 print(res)
