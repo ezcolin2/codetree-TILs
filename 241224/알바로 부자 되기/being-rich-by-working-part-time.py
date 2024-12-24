@@ -30,16 +30,17 @@ part_times = [list(map(int, input().split())) for _ in range(n)]
 
 # 현재 시점이전에 0이 아닌 값이 나올 때 그 값을 반환
 def find_max_before(dp, date):
-    for i in range(date, -1, -1):
-        if dp[i] != 0:
-            return dp[i]
-    return 0
+    # for i in range(date, -1, -1):
+    #     if dp[i] != 0:
+    #         return dp[i]
+    # return 0
+    return max(dp[:date+1])
 
 # 최대 값 구하기 
 def solution(part_times, length):
     dp = [0]*length
     for start, end, money in part_times:
-        dp[end] = max(dp[end], find_max_before(dp, start-1)+money)
+        dp[end] = max(dp[end], max(dp[:start] if start > 0 else [0])+money)
     return max(dp)
 
 # 압축한다.
