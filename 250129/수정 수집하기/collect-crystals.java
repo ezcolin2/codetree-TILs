@@ -52,7 +52,11 @@ public class Main {
 
             }
         }
-        return Math.max(dp[n][k][0], dp[n][k][1]);
+        int res = 0;
+        for (int j=0; j<=k; j++){
+            res = Math.max(dp[n][j][0], dp[n][j][1]);
+        }
+        return res;
     }
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
