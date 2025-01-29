@@ -26,6 +26,7 @@ public class Main {
         // 남은 움직일 수 있는 횟수가 k일 때 수집할 수 있는 수정의 최대 개수 
         int n = crystal.length();
         int[][][] dp = new int[n+1][k+1][2];
+        dp[1][k][0] = 1;
         for (int i=1; i<=n; i++){
             // 생성될 수정 위치
             int crystalLocation = getIndexOfCrystalLocation(crystal.charAt(i-1));
