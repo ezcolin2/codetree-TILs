@@ -54,7 +54,7 @@ public class Main {
         }
         int res = 0;
         for (int j=0; j<=k; j++){
-            res = Math.max(dp[n][j][0], dp[n][j][1]);
+            res = Math.max(res, dp[n][j][0], dp[n][j][1]);
         }
         return res;
     }
