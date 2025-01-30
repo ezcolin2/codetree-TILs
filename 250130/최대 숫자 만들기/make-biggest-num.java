@@ -17,7 +17,19 @@ public class Main {
         Arrays.sort(arr, new Comparator<String>(){
             @Override
             public int compare(String a, String b){
-                return Integer.parseInt(b+a) - Integer.parseInt(a+b);
+                String bigIntA = a+b;
+                String bigIntB = b+a;
+                int length = bigIntA.length();
+                // overflow에 대비하여 하나씩 비교한다.
+                for (int i=0; i<length; i++){
+                    if (bigIntA.charAt(i) > bigIntB.charAt(i)){
+                        return -1;
+                    }
+                    else if (bigIntA.charAt(i) < bigIntB.charAt(i)){
+                        return 1;
+                    }
+                }
+                return 0;
             }
         });
         String res = "";
