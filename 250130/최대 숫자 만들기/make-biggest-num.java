@@ -32,10 +32,10 @@ public class Main {
                 return 0;
             }
         });
-        String res = "";
-        for (int i=0; i<n; i++){
-            res += arr[i];
+        StringBuilder sb = new StringBuilder();
+        for (String num : arr) {
+            sb.append(num);
         }
-        System.out.println(res);
+        System.out.println(sb.toString());
     }
 }
