@@ -38,7 +38,11 @@ public class Main {
                 dp[i+5] = Math.min(dp[i+5], dp[i]+1);
             }
         }
-        bw.write(String.valueOf(dp[n]));
+        int res = dp[n];
+        if (res == INF){
+            res = -1;
+        }
+        bw.write(String.valueOf(res));
         bw.close();
     }
 }
