@@ -16,8 +16,13 @@ public class Main {
         for (int i=0; i<=n; i++){
             dp[i] = INF;
         }
-        dp[2] = 1;
-        dp[5] = 1;
+        if (n>=2){
+            dp[2] = 1;
+        }
+        if (n>=5){
+            dp[5] = 1;
+        }
+
 
         // 시작 
         for (int i=2; i<=n; i++){
