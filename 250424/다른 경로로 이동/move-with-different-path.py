@@ -34,7 +34,7 @@ def djikstra(start, end, graph, min_distance_path_set, previous_number_arr):
             if (next_number, current_number) in min_distance_path_set:
                 continue
             total_distance = current_distance+next_distance
-            if total_distance < distance_arr[next_number]:
+            if total_distance <= distance_arr[next_number]:
                 # 갱신
                 distance_arr[next_number] = total_distance
                 
@@ -59,6 +59,9 @@ previous_number_arr = [-1 for _ in range(n+1)]
 djikstra(1, n, graph, set(), previous_number_arr)
 
 min_distance_path_set = get_min_distance_path_set(previous_number_arr, 1, n)
-min_distance_arr = djikstra(1, n, graph, min_distance_path_set, previous_number_arr)
-print(min_distance_arr[n])
+previous_number_arr = [-1 for _ in range(n+1)] 
 
+min_distance_arr = djikstra(1, n, graph, min_distance_path_set, previous_number_arr)
+min_distance_path_set = get_min_distance_path_set(previous_number_arr, 1, n)
+
+print(min_distance_arr[n])
