@@ -18,7 +18,7 @@ class Jewel implements Comparable<Jewel>{
     @Override
     public int compareTo(Jewel jewel){
         // 가격/무게 기준으로 내림차순 정렬
-        double difference = (double)(jewel.value/jewel.weight) - (double)(this.value/this.weight);
+        double difference = (double)jewel.value/jewel.weight - (double)this.value/this.weight;
         if (difference > 0){
             return 1;
         } else if (difference == 0){
