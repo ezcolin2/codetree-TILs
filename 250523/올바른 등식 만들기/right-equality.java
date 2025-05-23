@@ -15,8 +15,8 @@ public class Main {
         }
         int[][] dp = new int[N][41];
         // 초기 값 세팅
-        dp[0][20 + numbers[0]] = 1;
-        dp[0][20 - numbers[0]] = 1;
+        dp[0][20 + numbers[0]] += 1;
+        dp[0][20 - numbers[0]] += 1;
         
         // 순회 시작
         for (int i=1; i<N; i++){
