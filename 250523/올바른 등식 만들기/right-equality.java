@@ -13,7 +13,7 @@ public class Main {
         for (int i = 0; i < N; i++) {
             numbers[i] = sc.nextInt();
         }
-        int[][] dp = new int[N][41];
+        long[][] dp = new long[N][41];
         // 초기 값 세팅
         dp[0][20 + numbers[0]] += 1;
         dp[0][20 - numbers[0]] += 1;
