@@ -38,7 +38,7 @@ public class Main {
         int res = 0;
         for (int i=0; i<3; i++){
             for (int j=0; j<3; j++){
-                res += dp[n][i][j];
+                res += dp[n][i][j]%1000000007;
             }
         }
         System.out.println(res%1000000007);
