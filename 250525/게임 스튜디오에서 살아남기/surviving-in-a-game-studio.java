@@ -17,12 +17,14 @@ public class Main {
                     // G 받음
                     // T 그대로
                     // B 끊김
-                    dp[i+1][j][0] += dp[i][j][k]%1000000007;
+                    dp[i+1][j][0] += dp[i][j][k];
+                    dp[i+1][j][0]%=1000000007;
                     // T 받음
                     // G 그대로
                     // B 끊김
                     if (j<2){
                         dp[i+1][j+1][0] += dp[i][j][k]%1000000007;
+                        dp[i+1][j+1][0]%=1000000007;
                     }
                     
                     // B 받음
@@ -30,6 +32,7 @@ public class Main {
                     // G 그대로
                     if (k<2){
                         dp[i+1][j][k+1] += dp[i][j][k]%1000000007;
+                        dp[i+1][j][k+1]%=1000000007;
                     }
                     
                 }
@@ -38,9 +41,10 @@ public class Main {
         int res = 0;
         for (int i=0; i<3; i++){
             for (int j=0; j<3; j++){
-                res += dp[n][i][j]%1000000007;
+                res += dp[n][i][j];
+                res%=1000000007;
             }
         }
-        System.out.println(res%1000000007);
+        System.out.println(res);
     }
 }
