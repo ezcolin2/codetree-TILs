@@ -14,8 +14,8 @@ public class Main {
         // -1로 초기화
         for (int i=0; i<=n; i++){
             for (int j=0; j<=m; j++){
-                dp[i][j][0] = -1;
-                dp[i][j][1] = -1;
+                dp[i][j][0] = -Integer.MAX_VALUE;
+                dp[i][j][1] = -Integer.MAX_VALUE;
             }
         }
 
@@ -27,7 +27,7 @@ public class Main {
 
         for (int i=1; i<n; i++){
             for (int j=0; j<=m; j++){
-                if (dp[i][j][0] != -1){
+                if (dp[i][j][0] != -Integer.MAX_VALUE){
                     // 다음 숫자를 새로운 그룹의 시작으로 추가하는 경우
                     // 그룹 수 증가
                     if (j+1 <= m){
@@ -37,7 +37,7 @@ public class Main {
                     // 그룹 수 그대로
                     dp[i+1][j][0] = Math.max(dp[i+1][j][0], dp[i][j][0]);
                 }
-                if (dp[i][j][1] != -1){
+                if (dp[i][j][1] != -Integer.MAX_VALUE){
                     // 다음 숫자를 마지막 그룹의 끝에 추가하는 경우
                     // 그룹 수는 그대로
                     dp[i+1][j][1] = Math.max(dp[i+1][j][1], dp[i][j][1] + arr[i+1]);
