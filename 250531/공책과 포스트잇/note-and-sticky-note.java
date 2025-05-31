@@ -20,9 +20,9 @@ public class Main {
 
         // parametric search 시작
         int left = 0;
-        int right = arr.length;
+        int right = 100000;
         int res = -1;
-        while (left < right){
+        while (left <= right){
             int mid = (left+right)/2;
             // 가능하다면 갱신
             if (isPossible(mid, k, l)){
@@ -33,7 +33,6 @@ public class Main {
                 right = mid-1;
             }
         }
-
         System.out.println(res);
     }
     /**
@@ -48,12 +47,13 @@ public class Main {
 
         // 필요한 공책의 개수를 구한다.
         int count = hIndex - (arr.length - firstIndex);
-
         
         // l*k 값을 사용해서 적절히 분배한 뒤, hIndex 값이 가능한지 구한다.
-        while (count > 0 && firstIndex >= 1){
+        while (count > 0){
             firstIndex -= 1;
-            
+            if (firstIndex<0){
+                return false;
+            }
             // 적어야 하는 개수
             int difference = hIndex - arr[firstIndex];
 
@@ -64,9 +64,8 @@ public class Main {
 
             // 공책에 적기
             totalCount -= difference;
-            count -= difference;
+            count -= 1;
         }
-
         return true;
     }
     /*
@@ -76,7 +75,7 @@ public class Main {
         int left = 0;
         int right = arr.length-1;
         int index = arr.length;
-        while (left<right){
+        while (left<=right){
             int mid = (left+right)/2;
             // arr[mid] 값이 hIndex보다 같거나 크면 갱신
             if (arr[mid] >= hIndex){
