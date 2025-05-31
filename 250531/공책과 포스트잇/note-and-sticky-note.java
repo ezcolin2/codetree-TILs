@@ -43,7 +43,7 @@ public class Main {
         int firstIndex = bisectLeft(hIndex);
 
         // 총 번호를 적을 수 있는 횟수
-        int totalCount = k*l;
+        long totalCount = k*l;
 
         // 필요한 공책의 개수를 구한다.
         int count = hIndex - (arr.length - firstIndex);
