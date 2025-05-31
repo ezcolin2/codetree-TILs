@@ -21,8 +21,8 @@ public class Main {
 
             // 만약 개수가 k개를 넘었다면
             if (map.get(arr[right]) >= k){
-                left += 1;
                 map.remove(arr[left]);
+                left += 1;
             }
 
             // 넘지 않았다면?
