@@ -11,12 +11,12 @@ public class Main {
             seq[i] = sc.nextInt();
         }
 
-        int[][][] dp = new int[N+1][5][N+1];
+        int[][][] dp = new int[N+1][5][M+1];
 
         // 우선 전부 -1로 초기화
         for (int i=0; i<=N; i++){
             for (int j=0; j<5; j++){
-                for (int k=0; k<=N; k++){
+                for (int k=0; k<=M; k++){
                     dp[i][j][k] = IMPOSSIBLE_STATE;
                 }
             }
@@ -36,7 +36,7 @@ public class Main {
         // 시작
         for (int i=1; i<N; i++){
             for (int j=1; j<=4; j++){
-                for (int k=0; k<=N; k++){
+                for (int k=0; k<=M; k++){
                     // 만약 불가능한 경우라면 스킵
                     if (dp[i][j][k] == IMPOSSIBLE_STATE){
                         continue;
@@ -57,11 +57,11 @@ public class Main {
                         // 다르다면? (k 증가)
                         else{
                             // 만약 seq[i+1]과 p가 같다면? (유사도 증가)
-                            if (seq[i+1] == p && k+1 <= N){
+                            if (seq[i+1] == p && k+1 <= M){
                                 dp[i+1][p][k+1] = Math.max(dp[i+1][p][k+1], dp[i][j][k]+1);
                             }
                             // 다르다면? 유사도 그대로
-                            else if (k+1 <= N){
+                            else if (k+1 <= M){
                                 dp[i+1][p][k+1] = Math.max(dp[i+1][p][k+1], dp[i][j][k]);
                             }
                         }
