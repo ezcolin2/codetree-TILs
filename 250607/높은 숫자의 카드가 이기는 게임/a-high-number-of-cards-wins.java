@@ -45,6 +45,7 @@ public class Main {
 
             //  큰 게 나왔다면?
             score+=1;
+            AIdx++;
         }
         System.out.println(score);
 
