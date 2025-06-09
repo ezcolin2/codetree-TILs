@@ -54,6 +54,10 @@ public class Main {
         // 빨간 돌을 오름차순으로 탐색하면서 매칭 할 검정 돌 고르기
         int blackIdx = 0;
         for (int redStone : redStones){
+            // B 값이 redStone보다 작은 경우 모두 스킵
+            while (blackIdx < n && blackStones[blackIdx][1] < redStone){
+                blackIdx +=1 ;
+            }
             // 가능한 모든 검은 돌을 넣는다.
             while(blackIdx < n && blackStones[blackIdx][0] <= redStone && redStone <= blackStones[blackIdx][1]){
                 // pq에 넣는다.
