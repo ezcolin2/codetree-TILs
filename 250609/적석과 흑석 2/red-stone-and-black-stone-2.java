@@ -70,7 +70,7 @@ public class Main {
             int[] blackStone = pq.remove();
 
             // 그런데 여기서 이전 빨간 돌에 해당하는 검은 돌들이 현재 빨간 돌에 맞지 않을 수 있으니 범위 체크
-            while (!pq.isEmpty() && blackStone[0] > redStone || blackStone[1] < redStone){
+            while (!pq.isEmpty() && (blackStone[0] > redStone || blackStone[1] < redStone)){
                 blackStone = pq.remove();
             }
 
