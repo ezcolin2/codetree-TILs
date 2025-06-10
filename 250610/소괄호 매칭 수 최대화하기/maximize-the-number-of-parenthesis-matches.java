@@ -81,14 +81,14 @@ public class Main {
             }
         }
         
-        int res = 0;
+        long res = 0;
         // 이제 순회하면서 점수 구하기
         for (int i=0; i<totalLength; i++){
             // ')'면 스킵
             if (totalString.charAt(i) == ')'){
                 continue;
             } else{
-                res += countRightArr[i];
+                res += (long) countRightArr[i];
             }
         }
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
