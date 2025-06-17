@@ -46,14 +46,20 @@ public class Main {
                 // 먼저 i+1번째 마법진의 현재 숫자를 구한다. (j번 반시계 회전)
                 int currentNumber = counterclockwiseRotate(currentState[i+1], j);
 
-                // 이 마법진이 목표에 도달하기 위해 필요한 시계 방향 회전 수를 구한다. (반시계 회전수는 고정되어 있기 때문에 고려할 필요 없다.)
+                // 이 마법진이 목표에 도달하기 위해 필요한 시계 방향 회전 수를 구한다. 
                 // 여기서 숫자를 맞추기 위해 필요한 시계 방향 회전 수를 구한다.
                 int clockwiseRoateCnt = currentNumber-goalState[i+1];
                 if (clockwiseRoateCnt < 0){
                     clockwiseRoateCnt += 10;
                 }
 
-                dp[i+1][j] = dp[i][j] + clockwiseRoateCnt;
+                // 숫자를 맞추기 위해 필요한 반시계 방향 회전 수를 구한다.
+                int counterclockwiseRoateCnt = goalState[i+1]-currentNumber;
+                if (counterclockwiseRoateCnt < 0){
+                    counterclockwiseRoateCnt += 10;
+                }
+                dp[i+1][j] = Math.min(dp[i+1][j], dp[i][j] + clockwiseRoateCnt);
+                dp[i+1][(j+counterclockwiseRoateCnt)%10] = Math.min(dp[i+1][(j+counterclockwiseRoateCnt)%10], dp[i][j] + counterclockwiseRoateCnt);
             }
         }
 
