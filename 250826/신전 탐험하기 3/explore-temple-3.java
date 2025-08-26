@@ -34,7 +34,7 @@ public class Main {
                     if(j==k){
                         continue;
                     }
-                    dp[i+1][k] = Math.max(dp[i+1][k], dp[i+1][k]+dp[i][j]);
+                    dp[i+1][k] = Math.max(dp[i+1][k], dp[i][j]+board[i+1][k]);
                 }
             }
         }
